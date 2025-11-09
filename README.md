@@ -1,93 +1,86 @@
-# Programação Dinâmica — Estudos 🧠
+# Programação Dinâmica — Estudos
 
-[![Joannabraccini](https://img.shields.io/badge/LinkedIn-Joannabraccini-0A66C2?logo=linkedin)](https://www.linkedin.com/in/Joannabraccini)
+Olá! Este repositório é um espaço simples e prático para estudar implementações em Java de algoritmos clássicos — principalmente buscas e ordenações — com comentários e exemplos curtos para ajudar no aprendizado.
 
-
-Esse repositório reúne implementações simples (Java) para estudo de algoritmos — principalmente buscas e ordenações quadráticas — com comentários e exemplos para aprendizado.
+[LinkedIn](https://www.linkedin.com/in/Joannabraccini)
 
 ---
 
-Sumário
-- [Sobre](#sobre)
-- [Estrutura do projeto](#estrutura-do-projeto)
-- [Tabela comparativa (resumo)](#tabela-comparativa-resumo)
-- [Exemplos rápidos](#exemplos-rápidos)
+Sumário: Sobre • Pacotes • Tabela comparativa • Compilar & Executar • Contribuições • Contato
 
 ---
 
 ## Sobre
 
-Objetivo: ter um espaço pequeno e prático para experimentar implementações, comparar comportamento (trocas, estabilidade, complexidade) e testar ideias.
-
-Uso: ideal para leitura de código, execução local e exercício de análise de complexidade.
-
-Nota: este estudo faz parte do programa "Elas + Tech" da Ada — material de aprendizado e prática desenvolvido no âmbito do programa.
+Objetivo: oferecer exemplos claros e comentados para estudo ou revisão de conceitos de análise de algoritmos: complexidade, estabilidade, número de trocas e trade-offs práticos.
 
 ---
 
-## Estrutura do projeto
+## Pacotes
 
-- `src/main/java/analiseDeAlgoritmos` — buscas e utilitários (ex.: `BuscaBinariaRecursiva`).
-- `src/main/java/ordenacaoQuadratica` — implementações O(n²): `BubbleSort.java`, `SelectionSort.java`, `InsertionSort`.
+- `algoritmosDeOrdenacao`
+  - Implementações de ordenação mais sofisticadas e suas variantes: `MergeSort`, `QuickSort`, `HeapSort`, `ShellSort`. Use este pacote para comparar desempenho médio, escolhas de pivô/gaps e uso de espaço auxiliar.
+  - Exemplo de execução (após compilar):
 
-### Arquivos em `src/main/java/analiseDeAlgoritmos`
+    ```bash
+    java -cp target\classes algoritmosDeOrdenacao.MergeSort
+    ```
 
-Abaixo há uma descrição dos arquivos presentes no pacote `analiseDeAlgoritmos`: foco no propósito, complexidade assintótica e pontos importantes para análise.
+- `ordenacaoQuadratica`
+  - Implementações didáticas O(n²): `BubbleSort`, `SelectionSort`, `InsertionSort`. Ótimo para entender trocas, estabilidade, e por que algoritmos melhores importam em casos maiores.
+  - Exemplo de execução:
 
-- `BuscaBinariaRecursiva.java` — Implementação recursiva da busca binária.
-  - Propósito: demonstrar busca em tempo logarítmico quando o array está ordenado.
-  - Complexidade: O(log n) tempo, O(1) espaço auxiliar (recursão adiciona O(log n) na pilha).
-  - Pontos de estudo: condicionais de término, cálculo de "meio" para evitar overflow, pré-condição de array ordenado, comportamento com arrays pares/ímpares e com elementos duplicados.
+    ```bash
+    java -cp target\classes ordenacaoQuadratica.InsertionSort
+    ```
 
-- `BuscaSequencial.java` — Implementação da busca linear.
-  - Propósito: mostrar o algoritmo mais simples para procurar um valor em uma coleção não ordenada.
-  - Complexidade: O(n) tempo no pior caso, O(1) espaço.
-  - Pontos de estudo: melhor caso (encontrado na primeira posição), pior caso (não encontrado), uso de um método utilitário `contem` como wrapper booleano.
+- `analiseDeAlgoritmos`
+  - Utilitários e exemplos de buscas: `BuscaBinariaRecursiva`, `BuscaSequencial`, `PotenciaDeDois`, e material de apoio (Teorema Mestre). Bom para revisar recorrências e comportamento assintótico.
+  - Exemplo de execução:
 
-- `BuscaSequencialLoopsAninhados.java` — Busca sequencial em matrizes (loops aninhados) com uma versão "segura" que trata linhas nulas/irregulares.
-  - Propósito: ilustrar custos de algoritmos com estruturas bidimensionais e problemas práticos como linhas com comprimentos diferentes ou nulas.
-  - Complexidade: O(rows * cols) tempo, O(1) espaço (ignorando a representação da matriz).
-  - Pontos de estudo: mapeamento de posição 2D para índice linear (row-major), diferenças entre implementação "original" e a versão que evita NullPointerException, trade-offs para arrays ragged.
-
-- `PotenciaDeDois.java` — Demonstra crescimento logarítmico por iterações exponenciais (1,2,4,...).
-  - Propósito: mostrar iterações que crescem em potências de dois, contar e listar potências <= n.
-  - Complexidade: O(log n) iterações; utilitários adicionais retornam arrays com todas as potências <= n.
-  - Pontos de estudo: uso de shifts para multiplicação por 2, cuidado com overflow e uso de tipos maiores quando necessário, variantes seguras que validam parâmetros.
-
-- `Teorema Master` — Nota/arquivo texto com enunciado e exemplos do Teorema Mestre; material de referência para resolver recorrências.
-  - Formulação (resumo): para recorrências da forma
-    T(n) = a T(n/b) + f(n), com a > 0, b > 1,
-    defina k = log_b(a).
-    - Se f(n) = O(n^{k - eps}) para algum eps > 0  => T(n) = Theta(n^k).
-    - Se f(n) = Theta(n^k)                         => T(n) = Theta(n^k log n).
-    - Se f(n) = Omega(n^{k + eps}) e condição regularidade => T(n) = Theta(f(n)).
-  - Exemplos objetivos:
-    - Merge sort: T(n) = 2 T(n/2) + Theta(n)  => a=2, b=2, k=1 => T(n) = Theta(n log n).
-    - Busca binária: T(n) = T(n/2) + Theta(1) => a=1, b=2, k=0 => T(n) = Theta(log n).
-    - Caso com maior subdivisão: T(n) = 4 T(n/2) + Theta(n) => a=4, b=2, k=2 => T(n) = Theta(n^2).
-  - Observação: verificar hipóteses do teorema (formas de f e condição de regularidade) antes de aplicar; o arquivo `Teorema Master` contém enunciado e exemplos usados neste repositório.
+    ```bash
+    java -cp target\classes analiseDeAlgoritmos.BuscaBinariaRecursiva
+    ```
 
 ---
 
+## Tabela comparativa
 
-## Tabela comparativa (resumo)
+| Algoritmo      | Complexidade (Melhor / Médio / Pior) | Espaço Aux. | # Trocas (ord.) | Estável? | Observações                                    |
+|----------------|---------------------------------------:|------------:|----------------:|:--------:|------------------------------------------------|
+| Bubble Sort    | O(n) / O(n²) / O(n²)                 | O(1)        | O(n²)           | sim      | Simples; ótimo para aprender; lento em grandes entradas |
+| Selection Sort | O(n²) / O(n²) / O(n²)                | O(1)        | O(n)            | não      | Poucas trocas; útil quando trocas são caras; não estável     |
+| Insertion Sort | O(n) / O(n²) / O(n²)                 | O(1)        | O(n²)           | sim      | Excelente para listas quase ordenadas; estável              |
+| Merge Sort     | O(n log n) / O(n log n) / O(n log n)| O(n)        | O(n log n)      | sim      | Estável; bom para grandes volumes; usa espaço adicional     |
+| Quick Sort     | O(n log n) / O(n log n) / O(n²)     | O(log n)    | O(n log n)      | não      | Muito rápido na prática; pivô/partição impactam o pior caso |
+| Heap Sort      | O(n log n) / O(n log n) / O(n log n)| O(1)        | O(n log n)      | não      | Em-place e previsível; não estável                         |
+| Shell Sort     | depende da sequência de gaps         | O(1)        | varia           | não      | Excelente para arrays moderados; performance depende da sequência de gaps |
 
-| Algoritmo      | O(temporal)     | O(espaco) | # Trocas | Estável? | Considerações                                    |
-|----------------|------------------|-----------|----------|----------|--------------------------------------------------|
-| Bubble Sort    | O(n²) / O(n)*    | O(1)      | O(n²)    | sim      | Simples; bom para aprendizado; fraco em grandes dados    |
-| Selection Sort | O(n²)            | O(1)      | O(n)     | não      | Simples; poucas trocas (útil quando trocas custam caro) |
-| Insertion Sort | O(n²) / O(n)     | O(1)      | O(n²)    | sim      | Excelente para listas quase ordenadas; estável |
-
-> (*) O(n) refere-se ao melhor caso (já ordenado / quase ordenado).
-
----
-
-## Exemplos rápidos
-
-Algumas classes incluem um método `main` com exemplos simples que demonstram uso básico das implementações.
+> Nota: ShellSort depende fortemente da sequência de gaps; o número de trocas é uma indicação geral para ordenações in-place.
 
 ---
 
-## Contato / Referência
+## Como compilar e executar
 
-Perfil LinkedIn: https://www.linkedin.com/in/Joannabraccini
+Requisitos: Java JDK 17; Maven instalado.
+
+No Windows CMD (na raiz do projeto):
+
+```bash
+cd local-do-projeto\ProgramacaoDinamica
+mvn -DskipTests package
+# depois escolha a classe com main que quiser executar, por exemplo:
+java -cp target\classes ordenacaoQuadratica.InsertionSort
+```
+
+Dica: se estiver usando uma IDE (IntelliJ/Eclipse), importe como projeto Maven para executar `main`s diretamente.
+
+---
+
+## Contato
+
+LinkedIn: https://www.linkedin.com/in/Joannabraccini
+
+---
+
+License: uso educacional — sinta-se à vontade para estudar e adaptar o código.

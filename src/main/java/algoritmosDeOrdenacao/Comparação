@@ -6,6 +6,8 @@ Shell Sort | O(n log n) (esperado)   | O(1)      | Não      | suporta conjuntos
            | O(n²) (pior)            |           |          | A complexidade depende da escolha da sequência de gaps.
 Merge Sort | O(n log n)              | O(n)      | Sim      | eficiência garantida; estável; indicado para grandes conjuntos de dados.
 Heap Sort  | O(n log n)              | O(1)      | Não      | complexidade espacial;
+Quick Sort | O(n log n) (esperado)   | O(1)      | Não      | conjunto de dados grande;
+           | O(n²) (pior)            |           |          | desempenho pode variar com a escolha do pivô.
 
 Observação: As notações acima resumem os comportamentos típicos — implementações específicas e sequências de gaps (no caso do Shell Sort) podem alterar o desempenho prático.
 
