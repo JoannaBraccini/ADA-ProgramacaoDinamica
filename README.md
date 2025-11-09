@@ -13,7 +13,6 @@ Sumário
 - [Como compilar & executar (Windows - cmd.exe)](#como-compilar--executar-windows---cmdexe)
 - [Tabela comparativa (resumo)](#tabela-comparativa-resumo)
 - [Exemplos rápidos](#exemplos-rápidos)
-- [Próximos passos sugeridos](#próximos-passos-sugeridos)
 
 ---
 

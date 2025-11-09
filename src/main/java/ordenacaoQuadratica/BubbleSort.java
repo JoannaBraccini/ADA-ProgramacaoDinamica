@@ -7,16 +7,13 @@ public class BubbleSort {
 
     /**
      * Ordena o array fornecido usando o algoritmo Bubble Sort.
-     *
      * O método altera o array original (in-place). Ele percorre o array com
      * dois loops aninhados e troca elementos adjacentes sempre que o atual
      * é maior que o próximo, "borrifando" o maior elemento para o fim em
      * cada iteração externa.
-     *
      * Entrada: array (int[]) - array de inteiros a ser ordenado.
      * Efeito: o array passado como parâmetro será modificado e ficará ordenado
      * em ordem crescente.
-     *
      * Complexidade: tempo O(n^2) no pior caso e O(1) espaço adicional.
      */
     public static void sort(int[] array) {

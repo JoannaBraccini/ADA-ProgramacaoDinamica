@@ -17,7 +17,6 @@ public class BuscaSequencialLoopsAninhados {
     /**
      * Wrapper seguro que não lança NullPointerException em matrizes com linhas
      * nulas e que trata matriz nula/vazia retornando -1.
-     *
      * Observação: para compatibilidade com o método original, o índice retornado
      * ainda usa a fórmula i * linha.length + j (mesmo se as linhas tiverem
      * comprimentos diferentes). Se precisar de enumeração row-major lógica para
