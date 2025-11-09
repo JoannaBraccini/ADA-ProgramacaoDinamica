@@ -1,0 +1,55 @@
+# Build output
+/target/
+
+# Keep the Maven wrapper jar tracked (if present)
+!.mvn/wrapper/maven-wrapper.jar
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# maven local repository (if ever added by mistake)
+/.m2/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.apt_generated/
+.factorypath
+
+# IntelliJ IDEA
+/.idea/
+*.iml
+*.iws
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*~
+
+# Others
+out/
+
+# If you intentionally want to track built artifacts in submodules, add exceptions manually

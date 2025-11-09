@@ -1,0 +1,11 @@
+# Comparação de algoritmos de ordenação (quadráticos)
+
+A tabela abaixo resume as características mostradas na imagem: complexidade temporal, uso de espaço, número de trocas, estabilidade e considerações.
+
+| Algoritmo      | O(temporal)     | O(espaco) | # Trocas | Estável? | Considerações                                    |
+|----------------|------------------|-----------|----------|----------|--------------------------------------------------|
+| Bubble Sort    | O(n²) / O(n)*    | O(1)      | O(n²)    | sim      | (+) simples  (-) ineficiente em grandes dados    |
+| Selection Sort | O(n²)            | O(1)      | O(n)     | não      | (+) simples  (+) bom quando se quer poucas trocas|
+| Insertion Sort | O(n²) / O(n)     | O(1)      | O(n²)    | sim      | (+) simples  (+) bom para quase ordenados (-) grandes conjuntos |
+
+Observação: O(n) com asterisco para Bubble e Insertion indica o caso melhor (quando já estão ordenados ou quase ordenados).

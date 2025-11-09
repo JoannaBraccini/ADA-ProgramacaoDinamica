@@ -1,0 +1,27 @@
+
+
+- Teorema Master -
+
+Se T(n) = aT(n/b) + O(n^d), sendo a > 0, b > 1, d >= 0, então,
+tome k = log_b a (log de a na base b):
+
+T(n) = se d > k -> O(n^d)
+T(n) = se d = k -> O(n^d log n)
+T(n) = se d < k -> O(n^k)
+
+T(n) = 4T(n/2) + O(n)
+a = 4, b = 2, d = 1, k = log_2 4 = 2
+d > k -> O(n^2)
+
+T(n) = 2T(n/2) + O(n)
+a = 2, b = 2, d = 1, k = log_2 2 = 1
+d = k -> O(n log n)
+
+T(n) = 2T(n/2) + O(n^2)
+a = 2, b = 2, d = 2, k = log_2 2 = 1
+d < k -> O(n^2)
+
+Busca binária: melhor caso: O(log n)
+T(n) = T(n/2) + O(1)
+a = 1, b = 2, d = 0, k = log_2 1 = 0
+d = 0 -> O(log n)
