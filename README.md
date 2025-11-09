@@ -1,4 +1,4 @@
-# Análise de Algoritmos — Estudos 🧠
+# Programação Dinâmica — Estudos 🧠
 
 [![Joannabraccini](https://img.shields.io/badge/LinkedIn-Joannabraccini-0A66C2?logo=linkedin)](https://www.linkedin.com/in/Joannabraccini)
 
