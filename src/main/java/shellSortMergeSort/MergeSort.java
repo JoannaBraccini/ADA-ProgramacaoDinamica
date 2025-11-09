@@ -27,13 +27,21 @@ public class MergeSort {
         int[] esquerda = new int[indexE];
         int[] direita = new int[indexD];
 
-        // preencher os vetores com os valores do vetor original
-        for (int i = 0; i < indexE; i++) {
-            esquerda[i] = array[inicio + i];
-        } // para o vetor da esquerda
-        for (int i = 0; i < indexD; i++) {
-            direita[i] = array[meio + 1 + i];
-        } // para o vetor da direita
+        /*
+            Com FOR
+            // preencher os vetores com os valores do vetor original
+            for (int i = 0; i < indexE; i++) {
+                esquerda[i] = array[inicio + i];
+            } // para o vetor da esquerda
+            for (int i = 0; i < indexD; i++) {
+                direita[i] = array[meio + 1 + i];
+            } // para o vetor da direita
+        */
+        // com ARRAY COPY (método nativo)
+        System.arraycopy(array, inicio, esquerda, 0, indexE); // para o vetor da esquerda
+        // copiar blocos de forma otimizada usando System.arraycopy
+        System.arraycopy(array, meio + 1, direita, 0, indexD); // para o vetor da direita
+
 
         // juntar os dois vetores
         int k = inicio; // índice no array original
