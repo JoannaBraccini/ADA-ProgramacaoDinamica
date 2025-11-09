@@ -1,4 +1,4 @@
-package shellSortMergeSort;
+package algoritmosDeOrdenacao;
 
 public class ShellSort {
 

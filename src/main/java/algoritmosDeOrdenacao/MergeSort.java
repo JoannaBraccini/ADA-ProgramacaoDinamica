@@ -1,4 +1,4 @@
-package shellSortMergeSort;
+package algoritmosDeOrdenacao;
 
 // T(n) = 2T(n/2) + O(n) -> Complexidade linear -> n log n
 public class MergeSort {
