@@ -42,6 +42,14 @@ Objetivo: oferecer exemplos claros e comentados para estudo ou revisão de conce
     java -cp target\classes analiseDeAlgoritmos.BuscaBinariaRecursiva
     ```
 
+- `algoritmosDeBusca`
+  - Implementações de buscas clássicas e didáticas (ex.: `BuscaBinaria`). Foca em versões recursivas/iterativas e pré-condições (array ordenado quando necessário).
+  - Exemplo de execução:
+
+    ```bash
+    java -cp target\classes algoritmosDeBusca.BuscaBinaria
+    ```
+
 ---
 
 ## Tabela comparativa
