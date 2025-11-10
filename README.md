@@ -6,7 +6,7 @@ Olá! Este repositório é um espaço simples e prático para estudar implementa
 
 ---
 
-Sumário: Sobre • Pacotes • Tabela comparativa • Compilar & Executar • Contribuições • Contato
+Sumário: Sobre • Pacotes • Tabela Hash • Algoritmos Gulosos • Tabela comparativa • Compilar & Executar • Contribuições • Contato
 
 ---
 
@@ -50,7 +50,88 @@ Objetivo: oferecer exemplos claros e comentados para estudo ou revisão de conce
     java -cp target\classes algoritmosDeBusca.BuscaBinaria
     ```
 
+- `tabelaHash`
+  - Implementação de tabela hash com tratamento de colisões por encadeamento (`HashTable`). Ideal para estudar hashing, funções de dispersão e redimensionamento automático.
+  - Características: inserção, busca, remoção, redimensionamento e tratamento de colisões por listas encadeadas.
+  - Exemplo de execução:
+
+    ```bash
+    java -cp target\classes tabelaHash.HashTable
+    ```
+
+- `algoritmosGulosos`
+  - Conjunto de algoritmos gulosos clássicos e didáticos: `CodigoDeHuffman` (compressão), escalonamento por intervalos, e exemplos de troco/knapsack fracionário.
+  - Bom para estudar heurísticas locais, sua correção e casos onde a estratégia gulosa falha.
+  - Exemplo de execução:
+
+    ```bash
+    java -cp target\classes algoritmosGulosos.CodigoDeHuffman
+    ```
+
 ---
+
+## Tabela Hash
+
+### Descrição
+
+Implementação pedagógica de tabela hash com encadeamento para tratamento de colisões. A classe principal é `HashTable` no pacote `tabelaHash`. Observação: a implementação atual é simples — usa chaves `String` e valores `int` e um hash baseado no tamanho da string.
+
+### Funcionalidades
+
+- `set(String key, int value)` — inserir ou atualizar um par chave/valor.
+- `get(String key)` — buscar valor por chave (retorna `Integer` ou `null` se não existir).
+
+Observação: a implementação atual não fornece `remove` nem redimensionamento automático (o número de buckets é fixo na classe).
+
+### Complexidade (esperada)
+
+- Inserção: O(1) médio (dependendo da função de hash)
+- Busca: O(1) médio
+- Pior caso (muitas colisões): O(n)
+
+### Exemplo de uso (baseado na classe `main` existente)
+
+```text
+HashTable hashTable = new HashTable();
+hashTable.set("casa", 10);
+hashTable.set("asa", 20);
+hashTable.set("azul", 25);
+
+System.out.println(hashTable.get("azul")); // esperado: 25
+System.out.println(hashTable.get("teste")); // esperado: null
+```
+
+### Testes
+
+- Atualmente não há testes em `src/test/java` neste repositório. Se desejar, posso adicionar testes básicos cobrindo inserção, colisões e busca.
+
+---
+
+## Algoritmos Gulosos
+
+### Descrição
+
+Coleção de implementações de algoritmos gulosos clássicos. No código atual existe `CodigoDeHuffman` no pacote `algoritmosGulosos`, que constrói a tabela de códigos de Huffman a partir de um `String` de entrada.
+
+### Problemas/Implementações notáveis
+
+- `CodigoDeHuffman` — construção de árvore de Huffman e geração de um mapa `Map<Character, String>` com os códigos.
+- Possíveis materiais adicionais no pacote: escalonamento de intervalos, knapsack fracionário (não verificados automáticamente).
+
+### API observada
+
+- `public static Map<Character, String> encode(String text)` — gera o mapeamento de caracteres para códigos de bits.
+- `public static void main(String[] args)` — exemplo de uso já presente na classe.
+
+### Exemplo (baseado na implementação atual)
+
+```text
+String text = "BCCABBDDAECCBBAEDDCC";
+Map<Character, String> huffmanTable = CodigoDeHuffman.encode(text);
+for (char c : huffmanTable.keySet()) {
+    System.out.println(c + ": " + huffmanTable.get(c));
+}
+```
 
 ## Tabela comparativa
 
