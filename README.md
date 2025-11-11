@@ -1,4 +1,4 @@
-# Programação Dinâmica — Estudos
+# Programação Dinâmica — Estudos 💻
 
 Olá! Este repositório é um espaço simples e prático para estudar implementações em Java de algoritmos clássicos — principalmente buscas e ordenações — com comentários e exemplos curtos para ajudar no aprendizado.
 
@@ -6,7 +6,7 @@ Olá! Este repositório é um espaço simples e prático para estudar implementa
 
 ---
 
-Sumário: Sobre • Pacotes • Tabela Hash • Algoritmos Gulosos • Tabela comparativa • Compilar & Executar • Contribuições • Contato
+Sumário: Sobre • Pacotes • Tabela Hash • Algoritmos Gulosos • Problema da Mochila • Tabela comparativa • Compilar & Executar • Contato
 
 ---
 
@@ -51,8 +51,8 @@ Objetivo: oferecer exemplos claros e comentados para estudo ou revisão de conce
     ```
 
 - `tabelaHash`
-  - Implementação de tabela hash com tratamento de colisões por encadeamento (`HashTable`). Ideal para estudar hashing, funções de dispersão e redimensionamento automático.
-  - Características: inserção, busca, remoção, redimensionamento e tratamento de colisões por listas encadeadas.
+  - Implementação de tabela hash com tratamento de colisões por encadeamento (`HashTable`). Ideal para estudar hashing, funções de dispersão e estruturas de dados auxiliares.
+  - Características: inserção, busca e tratamento de colisões por listas encadeadas.
   - Exemplo de execução:
 
     ```bash
@@ -66,6 +66,15 @@ Objetivo: oferecer exemplos claros e comentados para estudo ou revisão de conce
 
     ```bash
     java -cp target\classes algoritmosGulosos.CodigoDeHuffman
+    ```
+
+- `problem`
+  - Problemas clássicos de otimização resolvidos com programação dinâmica: `ProblemaDaMochila` (0/1 Knapsack).
+  - Ideal para estudar técnicas de memoização, tabelas DP e problemas NP-completos com soluções pseudo-polinomiais.
+  - Exemplo de execução:
+
+    ```bash
+    java -cp target\classes problem.ProblemaDaMochila
     ```
 
 ---
@@ -91,7 +100,7 @@ Observação: a implementação atual não fornece `remove` nem redimensionament
 
 ### Exemplo de uso (baseado na classe `main` existente)
 
-```text
+```java
 HashTable hashTable = new HashTable();
 hashTable.set("casa", 10);
 hashTable.set("asa", 20);
@@ -125,13 +134,84 @@ Coleção de implementações de algoritmos gulosos clássicos. No código atual
 
 ### Exemplo (baseado na implementação atual)
 
-```text
+```java
 String text = "BCCABBDDAECCBBAEDDCC";
 Map<Character, String> huffmanTable = CodigoDeHuffman.encode(text);
 for (char c : huffmanTable.keySet()) {
     System.out.println(c + ": " + huffmanTable.get(c));
 }
 ```
+
+---
+
+## Problema da Mochila (0/1 Knapsack)
+
+### Descrição
+
+Implementação do clássico problema da mochila usando **Programação Dinâmica**. Dado um conjunto de itens com pesos e valores, e uma mochila com capacidade limitada, o objetivo é maximizar o valor total dos itens colocados na mochila sem exceder sua capacidade.
+
+Este é um problema NP-completo quando resolvido de forma exata, mas a programação dinâmica oferece uma solução pseudo-polinomial eficiente.
+
+### Características da Implementação
+
+- Classe: `ProblemaDaMochila` no pacote `problem`
+- Método: **Bottom-up Dynamic Programming** com tabela 2D
+- Complexidade: O(n × W), onde n = número de itens e W = capacidade da mochila
+- Espaço: O(n × W) para a tabela de memoização
+
+### Funcionalidades
+
+- `solve()` — calcula o valor máximo que pode ser obtido
+- `imprimirMochila()` — reconstrói e imprime os pesos dos itens selecionados
+- `beneficioTotal` — armazena o valor máximo alcançado
+
+### Como Funciona
+
+1. Cria uma tabela `tabelaMochila[i][j]` onde:
+   - `i` representa os primeiros `i` itens considerados
+   - `j` representa a capacidade disponível
+   - O valor na célula é o máximo benefício possível
+
+2. Para cada item, decide:
+   - **Não pegar**: mantém o valor da linha anterior
+   - **Pegar**: adiciona o valor do item + valor ótimo com capacidade restante
+   - Escolhe o máximo entre as duas opções
+
+3. A reconstrução percorre a tabela de trás para frente identificando quais itens foram selecionados
+
+### Exemplo de uso
+
+```java
+int[] pesos = {2, 3, 4, 5};
+int[] valores = {1, 2, 5, 6};
+int capacidadeMochila = 8;
+
+ProblemaDaMochila mochila = new ProblemaDaMochila(
+    pesos.length, 
+    capacidadeMochila, 
+    pesos, 
+    valores
+);
+
+mochila.solve();
+System.out.println("Total: " + mochila.beneficioTotal); // Total: 8
+mochila.imprimirMochila(); // Imprime: 5 3
+```
+
+### Execução
+
+```bash
+java -cp target\classes problem.ProblemaDaMochila
+```
+
+### Aplicações Práticas
+
+- Otimização de recursos limitados
+- Seleção de projetos com orçamento fixo
+- Carregamento de containers/veículos
+- Alocação de memória/processamento
+
+---
 
 ## Tabela comparativa
 
